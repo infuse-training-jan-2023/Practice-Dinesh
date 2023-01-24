@@ -1,0 +1,2 @@
+docker build -t dinesh/ex1 .
+docker run --name ex3 dinesh/ex1

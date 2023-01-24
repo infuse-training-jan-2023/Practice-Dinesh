@@ -1,0 +1,1 @@
+console.log("Its a beautiful day")
