@@ -10,7 +10,7 @@ class Automate_lenskart
 
     def opening_website
         framework_obj.opening_site_and_maximizing("https://www.lenskart.com")
-        # framework_obj.wait_for(2)
+        framework_obj.wait_for(2)
     end
 
     def register()
@@ -68,13 +68,10 @@ class Automate_lenskart
         framework_obj.sending_data("computer glass",searchbar)
         framework_obj.sending_data(:return,searchbar)
         framework_obj.wait_for(2)
-        # cancel_popup()
-        # sorting_by_new()
-        # selecting_frame()
+        sorting_by_new()
+        selecting_frame()
         glasses = framework_obj.get_element_by_class("productWidgetBox_widgetImage")
         framework_obj.clicking_element(glasses)
-        # framework_obj.sending_data([:ctrl,"t"])
-        # framework_obj.sending_data()
         framework_obj.wait_for(3)
     end
 
@@ -87,10 +84,10 @@ class Automate_lenskart
     end
 
     def selecting_frame()
-        # framework_obj.wait_for(2)
+        framework_obj.wait_for(2)
         full_frame = framework_obj.get_elements_by_class("listItem")
         framework_obj.clicking_element(full_frame[4])
-        # framework_obj.wait_for(2)
+        framework_obj.wait_for(2)
     end
 
     def adding_to_wishlist()
@@ -100,9 +97,7 @@ class Automate_lenskart
         buy_now_button = framework_obj.get_element_by_class("buy-now-btn")
         framework_obj.clicking_element(buy_now_button)
         framework_obj.wait_for(3)
-
         product_price = framework_obj.get_element_by_xpath('//*[@id="content"]/div/div[3]/div/div[2]/div/div[2]/div[3]/span[2]')
-
         price_as_int =  product_price.text[1..7].to_i
         money = 1000
         if (price_as_int < money)
@@ -110,7 +105,6 @@ class Automate_lenskart
         else
             add_to_wishlist()
         end
-
         framework_obj.wait_for(5)
     end
 
@@ -132,17 +126,11 @@ class Automate_lenskart
 
 end
 
-at_ls = Automate_lenskart.new()
-at_ls.opening_website()
-# at_ls.register()
-at_ls.searching_for_spec()
+auto_lenskart = Automate_lenskart.new()
+auto_lenskart.opening_website()
 
-at_ls.adding_to_wishlist()
+# auto_lenskart.register()
 
+auto_lenskart.searching_for_spec()
 
-
-
-
-
-
-
+auto_lenskart.adding_to_wishlist()
