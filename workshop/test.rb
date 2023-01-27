@@ -5,7 +5,8 @@ class Test_framework < Test::Unit::TestCase
    
 
     def test_opening_site_and_maximizing
-        url = "http://127.0.0.1:5500/workshop/misc/index.html"
+        # url = "file:///C:/Users/dines/git/infuse/Practice-Dinesh/workshop/index.html"
+        url = "file:///app/index.html"
         obj = Framework.new()
         assert_equal("site opened and maximized",obj.opening_site_and_maximizing(url))
         obj.quit_browser()
@@ -13,26 +14,29 @@ class Test_framework < Test::Unit::TestCase
 
 
     def test_wait_for
-        url = "http://127.0.0.1:5500/workshop/misc/index.html"
+        # url = "file:///C:/Users/dines/git/infuse/Practice-Dinesh/workshop/index.html"
+        url = "file:///app/index.html"
         obj = Framework.new()
         assert_equal(3,obj.wait_for(3))
         obj.quit_browser()
     end
 
     def test_clicking_element
-        url = "http://127.0.0.1:5500/workshop/misc/index.html"
+        # url = "file:///C:/Users/dines/git/infuse/Practice-Dinesh/workshop/index.html"
+        url = "file:///app/index.html"
         obj = Framework.new()
         obj.opening_site_and_maximizing(url)
         submit_btn = obj.get_element_by_tag_name("button")
         obj.clicking_element(submit_btn)
         obj.wait_for(2)
         name_input_tag = obj.get_element_by_id("name")
-        assert_equal(nil,name_input_tag["value"])
+        assert_equal("",name_input_tag["value"])
         obj.quit_browser()
     end  
 
     def test_get_element_by_id
-        url = "http://127.0.0.1:5500/workshop/misc/index.html"
+        # url = "file:///C:/Users/dines/git/infuse/Practice-Dinesh/workshop/index.html"
+        url = "file:///app/index.html"
         obj = Framework.new()
         obj.opening_site_and_maximizing(url)
         element = obj.get_element_by_id("name")
@@ -41,7 +45,8 @@ class Test_framework < Test::Unit::TestCase
     end 
 
     def test_get_element_by_id_negativetest
-        url = "http://127.0.0.1:5500/workshop/misc/index.html"
+        # url = "file:///C:/Users/dines/git/infuse/Practice-Dinesh/workshop/index.html"
+        url = "file:///app/index.html"
         obj = Framework.new()
         obj.opening_site_and_maximizing(url)
         element = obj.get_element_by_id("nameee")
@@ -50,7 +55,8 @@ class Test_framework < Test::Unit::TestCase
     end 
 
     def test_get_element_by_class
-        url = "http://127.0.0.1:5500/workshop/misc/index.html"
+        # url = "file:///C:/Users/dines/git/infuse/Practice-Dinesh/workshop/index.html"
+        url = "file:///app/index.html"
         obj = Framework.new()
         obj.opening_site_and_maximizing(url)
         element = obj.get_element_by_class("number")
@@ -59,7 +65,8 @@ class Test_framework < Test::Unit::TestCase
     end
 
     def test_get_element_by_class_negativetest
-        url = "http://127.0.0.1:5500/workshop/misc/index.html"
+        # url = "file:///C:/Users/dines/git/infuse/Practice-Dinesh/workshop/index.html"
+        url = "file:///app/index.html"
         obj = Framework.new()
         obj.opening_site_and_maximizing(url)
         element = obj.get_element_by_class("numberrr")
@@ -68,7 +75,8 @@ class Test_framework < Test::Unit::TestCase
     end
 
     def test_get_elements_by_class
-        url = "http://127.0.0.1:5500/workshop/misc/index.html"
+        # url = "file:///C:/Users/dines/git/infuse/Practice-Dinesh/workshop/index.html"
+        url = "file:///app/index.html"
         obj = Framework.new()
         obj.opening_site_and_maximizing(url)
         element = obj.get_elements_by_class("number")[1]
@@ -77,7 +85,8 @@ class Test_framework < Test::Unit::TestCase
     end
 
     def test_get_elements_by_class_negativetest
-        url = "http://127.0.0.1:5500/workshop/misc/index.html"
+        # url = "file:///C:/Users/dines/git/infuse/Practice-Dinesh/workshop/index.html"
+        url = "file:///app/index.html"
         obj = Framework.new()
         obj.opening_site_and_maximizing(url)
         element = obj.get_elements_by_class("numberrr")
@@ -87,7 +96,8 @@ class Test_framework < Test::Unit::TestCase
 
     
     def test_get_element_by_tag_name_negativetest
-        url = "http://127.0.0.1:5500/workshop/misc/index.html"
+        # url = "file:///C:/Users/dines/git/infuse/Practice-Dinesh/workshop/index.html"
+        url = "file:///app/index.html"
         obj = Framework.new()
         obj.opening_site_and_maximizing(url)
         element = obj.get_element_by_tag_name("inputtt")
@@ -96,7 +106,8 @@ class Test_framework < Test::Unit::TestCase
     end
 
     def test_get_elements_by_tag_name_negativetest
-        url = "http://127.0.0.1:5500/workshop/misc/index.html"
+        # url = "file:///C:/Users/dines/git/infuse/Practice-Dinesh/workshop/index.html"
+        url = "file:///app/index.html"
         obj = Framework.new()
         obj.opening_site_and_maximizing(url)
         element = obj.get_elements_by_tag_name("inputtt")

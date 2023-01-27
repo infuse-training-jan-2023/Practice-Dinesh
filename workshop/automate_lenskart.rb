@@ -48,7 +48,7 @@ class Automate_lenskart
 
         email_input_tag = framework_obj.get_element_by_id("email")
         framework_obj.clicking_element(email_input_tag)
-        framework_obj.sending_data("dineshgawas02@gmail.com",email_input_tag)  
+        framework_obj.sending_data("dineshgawas03@gmail.com",email_input_tag)  
         framework_obj.wait_for(1)    
         
         password_input_div = framework_obj.get_element_by_class("sign-up-password-input-field-container")
@@ -63,6 +63,7 @@ class Automate_lenskart
     end
 
     def searching_for_spec()
+        cancel_popup()
         searchbar = framework_obj.get_element_by_tag_name("input")
         framework_obj.clicking_element(searchbar)
         framework_obj.sending_data("computer glass",searchbar)
@@ -96,7 +97,15 @@ class Automate_lenskart
  
         buy_now_button = framework_obj.get_element_by_class("buy-now-btn")
         framework_obj.clicking_element(buy_now_button)
-        framework_obj.wait_for(3)
+        framework_obj.wait_for(5)
+        zero_power_div = framework_obj.get_element_by_xpath('//*[@id="mySidenav"]/div[2]/div[2]/div/div/div[2]/div')
+        framework_obj.clicking_element(zero_power_div)
+        framework_obj.wait_for(2)
+        bluecut_logo_div = framework_obj.get_element_by_class("bluecut-logo")
+        framework_obj.get_element_by_tag_name("button",bluecut_logo_div)
+        select_lens_btn = framework_obj.get_element_by_tag_name("button",bluecut_logo_div)
+        framework_obj.clicking_element(select_lens_btn)
+        framework_obj.wait_for(2)
         product_price = framework_obj.get_element_by_xpath('//*[@id="content"]/div/div[3]/div/div[2]/div/div[2]/div[3]/span[2]')
         price_as_int =  product_price.text[1..7].to_i
         money = 1000

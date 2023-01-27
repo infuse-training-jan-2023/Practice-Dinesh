@@ -1,5 +1,5 @@
-FROM ruby:2.7 as base
-COPY . /app
+FROM ruby as base
+COPY . .
 WORKDIR /app
 ADD Gemfile .
 RUN bundle install --gemfile Gemfile
