@@ -1,6 +1,6 @@
-FROM ruby as base
-COPY . .
+FROM ruby:2.7 as base
 WORKDIR /app
+COPY . .
 ADD Gemfile .
 RUN bundle install --gemfile Gemfile
 
@@ -20,8 +20,9 @@ RUN curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-ke
     apt-get -yqq install google-chrome-stable && \
     rm -rf /var/lib/apt/lists/*
 
-FROM base as test
-CMD ["ruby", "test.rb"]
+# RUN pwd
+# FROM base as test
+CMD ruby test.rb
 
-FROM base as run
-CMD ["ruby", "automate_web_page.rb"]
+# FROM base as run
+# CMD ["ruby", "automate_web_page.rb"]
