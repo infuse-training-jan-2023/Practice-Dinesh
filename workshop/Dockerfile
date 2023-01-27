@@ -21,8 +21,8 @@ RUN curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-ke
     rm -rf /var/lib/apt/lists/*
 
 # RUN pwd
-# FROM base as test
-CMD ruby test.rb
+FROM base as test
+CMD ["ruby", "test.rb"]
 
-# FROM base as run
-# CMD ["ruby", "automate_web_page.rb"]
+FROM base as run
+CMD ["ruby", "automate_lenskart.rb"]

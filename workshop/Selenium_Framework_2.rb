@@ -14,6 +14,7 @@ class Framework
       options.add_argument("--disable-gpu")
       options.add_argument("--disable-dev-shm-usage")
       @driver = Selenium::WebDriver.for :chrome, options: options
+      # @driver = Selenium::WebDriver.for :chrome
    end
 
      def opening_site_and_maximizing(url)

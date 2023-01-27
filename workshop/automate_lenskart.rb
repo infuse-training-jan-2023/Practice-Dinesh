@@ -10,22 +10,24 @@ class Automate_lenskart
 
     def opening_website
         framework_obj.opening_site_and_maximizing("https://www.lenskart.com")
-        framework_obj.wait_for(2)
+        framework_obj.wait_for(5)
     end
 
     def register()
-        cancel_popup()
+        # cancel_popup()
         signin_and_register_btn = framework_obj.get_element_by_class("user-name")
         register_btn = framework_obj.get_elements_by_tag_name("span",signin_and_register_btn)
         framework_obj.clicking_element(register_btn[1])
         framework_obj.wait_for(2)
 
         sending_registration_data()
+        puts "registered"
     end
 
     def cancel_popup
         notification_popup = framework_obj.get_element_by_id("wzrk-cancel")
         framework_obj.clicking_element(notification_popup)
+        puts "cancelled popup"
     end
     
 
@@ -48,7 +50,7 @@ class Automate_lenskart
 
         email_input_tag = framework_obj.get_element_by_id("email")
         framework_obj.clicking_element(email_input_tag)
-        framework_obj.sending_data("dineshgawas03@gmail.com",email_input_tag)  
+        framework_obj.sending_data("dineshgawas08@gmail.com",email_input_tag)  
         framework_obj.wait_for(1)    
         
         password_input_div = framework_obj.get_element_by_class("sign-up-password-input-field-container")
@@ -60,10 +62,11 @@ class Automate_lenskart
         register_button = framework_obj.get_element_by_class("create-account-button")
         framework_obj.clicking_element(register_button)
         framework_obj.wait_for(2)
+        puts "sent register data"
     end
 
     def searching_for_spec()
-        cancel_popup()
+        # cancel_popup()
         searchbar = framework_obj.get_element_by_tag_name("input")
         framework_obj.clicking_element(searchbar)
         framework_obj.sending_data("computer glass",searchbar)
@@ -74,6 +77,7 @@ class Automate_lenskart
         glasses = framework_obj.get_element_by_class("productWidgetBox_widgetImage")
         framework_obj.clicking_element(glasses)
         framework_obj.wait_for(3)
+        puts "searched"
     end
 
     def sorting_by_new()
@@ -82,6 +86,7 @@ class Automate_lenskart
         options = framework_obj.get_elements_by_tag_name("option",sort_by_btn)
         framework_obj.clicking_element(options[3])
         framework_obj.wait_for(1)
+        puts "sorted"
     end
 
     def selecting_frame()
@@ -89,6 +94,7 @@ class Automate_lenskart
         full_frame = framework_obj.get_elements_by_class("listItem")
         framework_obj.clicking_element(full_frame[4])
         framework_obj.wait_for(2)
+        puts "frame selected"
     end
 
     def adding_to_wishlist()
@@ -120,6 +126,7 @@ class Automate_lenskart
     def place_order()
         order_button = framework_obj.get_element_by_class("place-order-cart")
         framework_obj.clicking_element(order_button)
+        puts "placed order"
     end
 
     def add_to_wishlist()
@@ -129,6 +136,8 @@ class Automate_lenskart
 
         add_to_wishlist = framework_obj.get_element_by_class("popup-wishlist")
         framework_obj.clicking_element(add_to_wishlist)
+
+        puts "completed"
         
     end
 
@@ -138,7 +147,7 @@ end
 auto_lenskart = Automate_lenskart.new()
 auto_lenskart.opening_website()
 
-# auto_lenskart.register()
+auto_lenskart.register()
 
 auto_lenskart.searching_for_spec()
 
