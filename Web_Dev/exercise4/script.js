@@ -9,10 +9,6 @@ const user = {
  * Use destructuting to log the following
 */
 
-const printUserProfile = ({name,designation,company,hobbies}) => {
-    
-    // Piyush Sharma is a Senior Software Engineer at Infuse Consulting. He likes Reading, Listening to music and Collecting stamps
-    console.log(`${name} is a ${designation} at ${company}. He likes ${hobbies.map((hobby)=>{return hobby})}`);
-}
+const printUserProfile = ({name,designation,company,hobbies}) => (`${name} is a ${designation} at ${company}. He likes ${hobbies.map((hobby)=>{return hobby})}`)
 
-printUserProfile(user)
+console.log(printUserProfile(user))

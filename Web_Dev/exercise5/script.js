@@ -118,36 +118,36 @@ let search_pokemon = ()  =>{
         return element.children[1].innerHTML.includes(value)
     })
     console.log(result)
-    document.getElementById("main-container").replaceChildren(...result)
+    if(result.length==0){
+        document.getElementById("main-container").replaceChildren("NO POKEMON FOUND")
+    }
+    else{
+        document.getElementById("main-container").replaceChildren(...result)
+    }
 
 }
 
-let sorted_weights = () =>{
+let sorted = (child_no) =>{
 
     var result = Array.from(document.getElementById("main-container").children).sort((a,b)=>{
-
         
-        a = (String(a.children[2].innerText).split("=")[1])
-        b = (String(b.children[2].innerText).split("=")[1])
-        console.log(a-b)
+        a = (String(a.children[child_no].innerText).split("=")[1])
+        b = (String(b.children[child_no].innerText).split("=")[1])
          return a-b
     })
     document.getElementById("main-container").replaceChildren(...result)
     console.log("sorted")
 }
 
-let sorted_name = () =>{
+
+let sorted_by_name = (child_no) =>{
 
     var result = Array.from(document.getElementById("main-container").children).sort((a,b)=>{
-        a = (String(a.children[1].innerText).split("=")[1])
-        b = (String(b.children[1].innerText).split("=")[1])
+        a = (String(a.children[child_no].innerText).split("=")[1])
+        b = (String(b.children[child_no].innerText).split("=")[1])
         if(a>b == true){
             return 1
         }
-        // else{
-        //     ret
-        // }
-
          return -1
     })
     document.getElementById("main-container").replaceChildren(...result)
@@ -155,17 +155,7 @@ let sorted_name = () =>{
 }
 
 
-let sorted_base_exp = () =>{
 
-    var result = Array.from(document.getElementById("main-container").children).sort((a,b)=>{
-        a = (String(a.children[3].innerText).split("=")[1])
-        b = (String(b.children[3].innerText).split("=")[1])
-        console.log(a-b)
-         return a-b
-    })
-    document.getElementById("main-container").replaceChildren(...result)
-    console.log("sorted")
-}
 
 console.log(document.getElementById("main-container"))
 
