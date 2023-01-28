@@ -8,11 +8,7 @@ driver.manage.window.maximize
 class Three
     def que_three(driver)
         driver.get "https://practise.usemango.co.uk/"
-
         driver.find_element(:id,'about').click
-
-        sleep(3)
-
         puts "button clicked"
 
         driver.quit()

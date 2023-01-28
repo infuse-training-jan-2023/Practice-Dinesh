@@ -3,15 +3,17 @@ Selenium::WebDriver::Chrome::Service.driver_path = "C:\\Users\\dines\\Selenium\\
 driver = Selenium::WebDriver.for :chrome
 # 2. Write a script to navigate to a website and get its title.
 driver.manage.window.maximize
+url = "https://www.youtube.com"
 
 class Two
-    def que_two
-        driver.get "https://www.youtube.com"
+    def que_two(url,driver)
+        driver.get url
         title = driver.title
         puts "page title is #{title}"
         driver.quit()
     end
 end
 
-Two.new.que_two(driver)
+two = Two.new()
+two.que_two(url,driver)
 

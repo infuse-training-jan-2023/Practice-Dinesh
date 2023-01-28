@@ -10,6 +10,8 @@ class One
     end 
 end
 
-One.new.que_one(driver)
+question_one = One.new()
+
+question_one.que_one(driver)
 
 
