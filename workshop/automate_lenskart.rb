@@ -11,6 +11,8 @@ class Automate_lenskart
     def opening_website
         framework_obj.opening_site_and_maximizing("https://www.lenskart.com")
         framework_obj.wait_for(5)
+        puts "website opened"
+        puts framework_obj.get_title()
     end
 
     def register()
@@ -45,12 +47,12 @@ class Automate_lenskart
         
         phone_no_input = framework_obj.get_element_by_class("phone-number-input")
         framework_obj.clicking_element(phone_no_input)
-        framework_obj.sending_data("9130991477",phone_no_input)
+        framework_obj.sending_data("9130991489",phone_no_input)
         framework_obj.wait_for(1)
 
         email_input_tag = framework_obj.get_element_by_id("email")
         framework_obj.clicking_element(email_input_tag)
-        framework_obj.sending_data("dineshgawas08@gmail.com",email_input_tag)  
+        framework_obj.sending_data("dineshgawas11@gmail.com",email_input_tag)  
         framework_obj.wait_for(1)    
         
         password_input_div = framework_obj.get_element_by_class("sign-up-password-input-field-container")
@@ -71,10 +73,12 @@ class Automate_lenskart
         framework_obj.clicking_element(searchbar)
         framework_obj.sending_data("computer glass",searchbar)
         framework_obj.sending_data(:return,searchbar)
-        framework_obj.wait_for(2)
+        framework_obj.wait_for(4)
         sorting_by_new()
         selecting_frame()
+        framework_obj.wait_for(4)
         glasses = framework_obj.get_element_by_class("productWidgetBox_widgetImage")
+        framework_obj.wait_for(4)
         framework_obj.clicking_element(glasses)
         framework_obj.wait_for(3)
         puts "searched"
@@ -87,6 +91,7 @@ class Automate_lenskart
         framework_obj.clicking_element(options[3])
         framework_obj.wait_for(1)
         puts "sorted"
+        puts "done"
     end
 
     def selecting_frame()
@@ -95,13 +100,16 @@ class Automate_lenskart
         framework_obj.clicking_element(full_frame[4])
         framework_obj.wait_for(2)
         puts "frame selected"
+        puts "completed"
     end
 
     def adding_to_wishlist()
 
         framework_obj.switch_tab()
- 
-        buy_now_button = framework_obj.get_element_by_class("buy-now-btn")
+        puts(framework_obj.get_title())
+        framework_obj.wait_for(5)
+        # buy_now_button = framework_obj.get_element_by_class("buy-now-btn")
+        buy_now_button = framework_obj.get_element_by_xpath('/html/body/div[1]/div/div[2]/div/div/div[2]/div[2]/div[4]/div/div[1]/button')
         framework_obj.clicking_element(buy_now_button)
         framework_obj.wait_for(5)
         zero_power_div = framework_obj.get_element_by_xpath('//*[@id="mySidenav"]/div[2]/div[2]/div/div/div[2]/div')
@@ -147,8 +155,8 @@ end
 auto_lenskart = Automate_lenskart.new()
 auto_lenskart.opening_website()
 
-auto_lenskart.register()
+# auto_lenskart.register()
 
 auto_lenskart.searching_for_spec()
 
-auto_lenskart.adding_to_wishlist()
+# auto_lenskart.adding_to_wishlist()
