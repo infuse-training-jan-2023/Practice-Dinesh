@@ -3,8 +3,8 @@ Selenium::WebDriver::Chrome::Service.driver_path = "C:\\Users\\dines\\Selenium\\
 driver = Selenium::WebDriver.for :chrome
 driver.manage.window.maximize
 
-class Six
-    def que_six(driver)
+class Get_country_codes
+    def getting_country_codes(driver)
         driver.get 'https://letcode.in/forms'
 
         options = driver.find_elements(:tag_name => "option")
@@ -19,5 +19,6 @@ class Six
     end
 end   
 
-Six.new.que_six(driver)
+obj = Get_country_codes.new()
+obj.getting_country_codes(driver)
 

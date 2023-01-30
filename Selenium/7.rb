@@ -4,18 +4,14 @@ Selenium::WebDriver::Chrome::Service.driver_path = "C:\\Users\\dines\\Selenium\\
 driver = Selenium::WebDriver.for :chrome
 driver.manage.window.maximize
 
-class Seven
-    def que_seven(driver)
+class Get_opotion_list
+    def getting_options_list(driver)
         driver.get 'https://letcode.in/forms'
-
         options = driver.find_element(:tag_name => "select")
-
         sel = options.find_elements(:tag_name => "option")
-
         sel[5].click
-
-        sleep(2)
     end
 end
 
-Seven.new.que_seven(driver)
+obj = Get_country_codes.new()
+obj.getting_options_list(driver)

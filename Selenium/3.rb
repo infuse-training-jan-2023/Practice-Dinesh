@@ -5,15 +5,14 @@ Selenium::WebDriver::Chrome::Service.driver_path = "C:\\Users\\dines\\Selenium\\
 driver = Selenium::WebDriver.for :chrome
 driver.manage.window.maximize
 
-class Three
-    def que_three(driver)
+class Click_button
+    def clicking_button(driver)
         driver.get "https://practise.usemango.co.uk/"
         driver.find_element(:id,'about').click
-        puts "button clicked"
-
         driver.quit()
     end
 end
 
-Three.new.que_three(driver)
+obj = Click_button.new()
+obj.clicking_button(driver)
 

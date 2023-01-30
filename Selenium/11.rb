@@ -1,11 +1,10 @@
 require 'selenium-webdriver'
 Selenium::WebDriver::Chrome::Service.driver_path = "C:\\Users\\dines\\Selenium\\chromedriver_win32\\chromedriver.exe"
-
 driver = Selenium::WebDriver.for :chrome
 url = "https://the-internet.herokuapp.com/tables"
 
-class Que_eleven
-    def q11(driver,url)
+class Get_cell
+    def getting_a_cell(driver,url)
         driver.get(url)
         tbody = driver.find_element(:tag_name => 'tbody')
         tr = tbody.find_elements(:tag_name => 'tr')
@@ -18,4 +17,5 @@ class Que_eleven
     end
 end
 
-Que_eleven.new.q11(driver,url)
+obj = Get_cell.new()
+obj.getting_a_cell(driver,url)

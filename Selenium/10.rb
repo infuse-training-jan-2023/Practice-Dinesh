@@ -1,14 +1,11 @@
 require 'selenium-webdriver'
 Selenium::WebDriver::Chrome::Service.driver_path = "C:\\Users\\dines\\Selenium\\chromedriver_win32\\chromedriver.exe"
-
 driver = Selenium::WebDriver.for :chrome
-
 driver.get("https://computer-database.gatling.io/computers")
-
 url = "https://computer-database.gatling.io/computers"
 
-class Que_ten
-    def q10(driver,url)
+class Table_column
+    def getting_table_column(driver,url)
         driver.get(url)
         tbody = driver.find_element(:tag_name => 'tbody')
 
@@ -26,4 +23,5 @@ class Que_ten
     end
 end
 
-Que_ten.new.q10(driver,url)
+obj = Table_column.new()
+obj.getting_table_column(driver,url)

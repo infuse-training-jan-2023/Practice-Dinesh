@@ -5,11 +5,11 @@ Selenium::WebDriver::Chrome::Service.driver_path = "C:\\Users\\dines\\Selenium\\
 driver = Selenium::WebDriver.for :chrome
 driver.manage.window.maximize
 
-class Four
-    def que_four(driver)
+class Check_box_radio_btn
+    def selecting_check_box_radio_btn(driver)
         driver.get 'https://demo.automationtesting.in/Register.html'
-        driver.find_element(:name,'radiooptions').click
-        driver.find_element(:id,'checkbox1').click
+        driver.find_elements(:name,'radiooptions')[0].click
+        driver.find_elements(:id,'checkbox1')[0].click
 
         sleep(3)
 
@@ -17,5 +17,6 @@ class Four
     end
 end
 
-Four.new.que_four(driver)
+obj = Check_box_radio_btn.new()
+obj.selecting_check_box_radio_btn(driver)
 

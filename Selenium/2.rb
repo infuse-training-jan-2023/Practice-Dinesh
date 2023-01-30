@@ -5,15 +5,14 @@ driver = Selenium::WebDriver.for :chrome
 driver.manage.window.maximize
 url = "https://www.youtube.com"
 
-class Two
-    def que_two(url,driver)
+class Get_page_title
+    def getting_page_title(url,driver)
         driver.get url
         title = driver.title
         puts "page title is #{title}"
         driver.quit()
     end
 end
-
-two = Two.new()
-two.que_two(url,driver)
+obj = Get_page_title.new()
+obj.getting_page_title(url,driver)
 

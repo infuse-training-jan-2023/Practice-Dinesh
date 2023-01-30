@@ -1,13 +1,9 @@
 require 'selenium-webdriver'
 Selenium::WebDriver::Chrome::Service.driver_path = "C:\\Users\\dines\\Selenium\\chromedriver_win32\\chromedriver.exe"
 driver = Selenium::WebDriver.for :chrome
-
 driver.manage.window.maximize
 
-
-
-
-class Que8
+class Scroll_bar
     def opening_url(driver)
         driver.get("https://www.globalsqa.com/demo-site/sliders/#Steps")
         sleep(2)
@@ -24,5 +20,6 @@ class Que8
   end
   
 
-  Que8.new.opening_url(driver)
-  Que8.new.slider(driver)
+  obj = Scroll_bar.new()
+  obj.opening_url(driver)
+  obj.slider(driver)

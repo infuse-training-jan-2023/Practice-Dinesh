@@ -1,39 +1,34 @@
 require 'selenium-webdriver'
-Selenium::WebDriver::Chrome::Service.driver_path = "C:\\Users\\dines\\Selenium\\chromedriver_win32\\chromedriver.exe"
-driver = Selenium::WebDriver.for :chrome
-driver.manage.window.maximize
-url = "https://magento.softwaretestingboard.com/"
 
+url = "https://magento.softwaretestingboard.com/"
 
 class Twelve
 
+    attr_accessor :driver
+    def initialize
+        Selenium::WebDriver::Chrome::Service.driver_path = "C:\\Users\\dines\\Selenium\\chromedriver_win32\\chromedriver.exe"
+        @driver = Selenium::WebDriver.for :chrome
+    end
 
-    def opening_website_getting_title(driver,url)
+    def open_website_get_title(url)
         driver.get(url)
         puts driver.title
+        driver.manage.window.maximize
         # sleep(2)
     end
 
-    def sending_text_to_searchbar(driver)
-        searchbar = driver.find_element(:id => 'search').click
+    def send_text_to_searchbar()
+        searchbar = driver.find_element(:id => 'search')
         sending_text = driver.find_element(:id => 'search').send_keys('pants', :return)
         # sleep(5)
     end
 
-    def sorting(driver)
-        sort = driver.find_element(:id => 'sorter').click
-        sleep(2)
-        sorted = sort.find_element(:xpath => '//*[@id="sorter"]/option[1]').click
-        # sleep(2)
-        
-    end
-
-    def clicking_img(driver)
+    def click_img()
         driver.find_element(:class => "product-image-container").click
         # sleep(2)
     end
 
-    def getting_price_and_name(driver)
+    def get_price_and_name()
         name = driver.find_element(:class => "base").text
         price = driver.find_element(:class => "price").text
         puts name
@@ -41,11 +36,12 @@ class Twelve
         sleep(2)
     end
 
-    def ordering_by_checking_price(driver)
+    def order_by_checking_price()
         price = driver.find_element(:class => "price").text
         if (price == '$35.00')
             driver.find_element(:id => "option-label-size-143-item-175").click
             driver.find_element(:id => "option-label-color-93-item-49").click
+            sleep(2)
             driver.find_element(:id => 'product-addtocart-button').click
             # sleep(2)
         else
@@ -53,24 +49,22 @@ class Twelve
         end
     end
 
-    def going_to_cart(driver)
+    def go_to_cart()
         driver.find_element(:class => "minicart-wrapper").click
         sleep(8)
-        driver.exit()
     end
 
 end
 
 twlv = Twelve.new()
 
-twlv.opening_website_getting_title(driver,url)
-twlv.sending_text_to_searchbar(driver)
-# twlv.sorting(driver)
-twlv.clicking_img(driver)
-twlv.getting_price_and_name(driver)
+twlv.open_website_get_title(url)
+twlv.send_text_to_searchbar()
+twlv.click_img()
+twlv.get_price_and_name()
 
-twlv.ordering_by_checking_price(driver)
+twlv.order_by_checking_price()
 
-twlv.going_to_cart(driver)
+twlv.go_to_cart()
 
 
