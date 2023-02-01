@@ -1,0 +1,14 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+                bat 'mkdir folder_ex1'
+                bat 'cd folder1'
+                bat 'type nul > hi.txt'
+                bat 'echo hello world >> hi.txt'
+            }
+        }
+    }
+}
