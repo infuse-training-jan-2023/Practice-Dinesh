@@ -3,7 +3,7 @@
 class Serial_avg:
     def __init__(self) -> None:
         pass
-    def get_serial_average(self, data):
+    def get_serial_average(self, data: str) -> str:
         if(len(data) == 15):
             try:
                 seperated_data = data.split("-")
