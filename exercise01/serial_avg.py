@@ -14,11 +14,13 @@ class Serial_avg:
                 if len(last_value_check[1]) < 2:
                     last_value_check[1] = last_value_check[1] + "0"
                 return (f'{seperated_data[0]}-{last_value_check[0]}.{last_value_check[1]}')
-            except:
-                return "wrong input"
+            except Exception as e:
+                return f"error::  {e}"
         else:
-            return "wrong input format"
+            return "input length is not as required"
 
 
+obj = Serial_avg()
 
+print(obj.get_serial_average("019-9f.99-46.99"))
 

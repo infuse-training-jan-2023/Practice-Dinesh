@@ -8,11 +8,11 @@ class Test_serial_avg:
 
     def test_char_in_int_string(self):
         obj_serial_avg = Serial_avg()
-        assert "wrong input" == obj_serial_avg.get_serial_average("019-99.f9-46.99")
+        assert "error::  could not convert string to float: '9f.99'" == obj_serial_avg.get_serial_average("019-9f.99-46.99")
 
     def test_wrong_length_input(self):
         obj_serial_avg = Serial_avg()
-        assert "wrong input format" == obj_serial_avg.get_serial_average("019-99.678-46.99")
+        assert "input length is not as required" == obj_serial_avg.get_serial_average("019-99.678-46.99")
 
     def test_for_zero_second_value(self):
         obj_serial_avg = Serial_avg()
