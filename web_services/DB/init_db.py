@@ -17,6 +17,13 @@ cursor.execute("INSERT INTO items (item,status,reminder) VALUES(?,?,?)",
 ('assingnments','working on it',True)
 )
 
+cursor.execute("INSERT INTO items (item,status,reminder) VALUES(?,?,?)",
+('read','done',False)
+)
+
+cursor.execute("INSERT INTO items (item,status,reminder) VALUES(?,?,?)",
+('eat','not done',True)
+)
 cursor.execute("INSERT INTO users (name,age) VALUES(?,?)",
 ('rohan',57)
 )
