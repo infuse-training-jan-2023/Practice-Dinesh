@@ -1,12 +1,12 @@
-from serial_avg import Serial_avg
+from serial_avg import SerialAvg
 import unittest
 
-class Test_serial_avg(unittest.TestCase):
+class TestSerialAvg(unittest.TestCase):
     def setUp(self):
-        self.obj_serial_avg = Serial_avg()
+        self.obj_serial_avg = SerialAvg()
 
     def test_class_instance(self):
-        assert(isinstance(self.obj_serial_avg,Serial_avg))
+        assert(isinstance(self.obj_serial_avg,SerialAvg))
 
     def test_char_in_int_string(self):
         self.assertEqual("error::  could not convert string to float: '9f.99'",self.obj_serial_avg.get_serial_average("019-9f.99-46.99")) 

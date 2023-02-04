@@ -1,6 +1,6 @@
 # data = "019-99.99-46.99"
 
-class Serial_avg:
+class SerialAvg:
     def __init__(self) -> None:
         pass
     def get_serial_average(self, data: str) -> str:
@@ -20,7 +20,7 @@ class Serial_avg:
             return "input length is not as required"
 
 
-obj = Serial_avg()
+obj = SerialAvg()
 
 print(obj.get_serial_average("019-9f.99-46.99"))
 
