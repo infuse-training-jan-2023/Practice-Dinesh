@@ -1,0 +1,121 @@
+#main-container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 1100px;
+}
+
+.overall{
+    display: flex;
+}
+
+.title{
+    display: flex;
+    font-size: 40px;
+    justify-content: center;
+    color: rgb(142, 11, 11);
+    position: sticky;
+    top: 0;
+    background-color:lightblue;
+}
+
+iframe{
+    width: 600px;
+    height: 1000px;
+    position: sticky;
+    top: 10px; 
+
+}
+
+.card{
+    margin: 10px;
+    background-color:rgb(194, 216, 223) ;
+    border-radius: 20px;
+}
+
+button{
+    margin: 20px 10px;
+    margin-right:-5px ;
+    height: 50px;
+    width:150px ;
+    border-radius: 25%;
+    cursor: pointer;
+}
+
+   
+
+.search-input{
+    margin: 20px 10px 0px 10px;
+    margin-right:-5px ;
+    height: 50px;
+    width:150px ;
+    position: sticky;
+    top: 400px;
+}
+
+.btn1{
+    position: sticky;
+    top: 100px;
+}
+
+.btn2{
+    position: sticky;
+    top: 200px;
+}
+
+.btn3{
+    position: sticky;
+    top: 300px;
+}
+
+.btn4{
+    margin-top: 5px;
+    position: sticky;
+    top: 460px;
+}
+
+#load_more_button{
+    font-size: 30px;
+    width: 1060px;
+    /* display: flex; */
+}
+
+.buttons{
+    background-color:rgb(194, 216, 223) ;
+
+}
+
+
+
+
+@media screen and (max-width: 550px) {
+
+    #main_container_and_button{
+        display: flex;
+        flex-wrap: wrap;
+        width: 170px;
+    }
+
+    iframe{
+        width: 300px;
+        height: 1000px;
+        position: sticky;
+        top: 10px; 
+    
+    }
+
+    .edit_button{
+        margin: 4px;
+        height: 25px;
+    }
+
+    .buttons{
+        width: 180px;
+        position: sticky;
+        top: 670px;
+        margin-left: -250px;
+        margin-top: 670px;
+        height: 200px;
+    }
+
+
+  }
