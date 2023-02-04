@@ -4,7 +4,7 @@ class Subarray:
     def __init__(self, nums) -> None:
         self.nums = nums
 
-    def subarraySum(self, k):
+    def get_subarray_sum_count(self, k):
         try:
             current_Sum = 0
             Count = 0
@@ -27,4 +27,4 @@ class Subarray:
             return "Invalid Input"
 
 obj = Subarray(arr)
-print(obj.subarraySum(-93))
+print(obj.get_subarray_sum_count(-93))
