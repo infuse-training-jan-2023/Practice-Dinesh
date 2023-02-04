@@ -10,14 +10,9 @@ class Table_column
         tbody = driver.find_element(:tag_name => 'tbody')
 
         tr = tbody.find_elements(:tag_name => 'tr')
-        puts tr.count
-
-        tr.each do |i|
-            td = tr[i].find_element(:tag_name => 'td')
-            a = td.find_element(:tag_name => 'a').text
-            puts a
-        end
-
+        td = tr[0].find_element(:tag_name => 'td')
+        text = td.find_element(:tag_name => 'a').text
+        puts text
         sleep(2)
         driver.quit()
     end

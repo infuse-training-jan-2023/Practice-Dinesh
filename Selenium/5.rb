@@ -7,8 +7,8 @@ class Send_keys
     def sending_keys(driver)
         driver.get 'https://www.google.com'
 
-        driver.find_element(:tag_name,'input').click
-        driver.find_element(:tag_name,'input').send_keys('usemango', :return)
+        element = driver.find_element(:tag_name,'input').click
+        element.send_keys('usemango', :return)
         sleep(5)
 
         driver.quit()

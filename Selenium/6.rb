@@ -7,13 +7,10 @@ class Get_country_codes
     def getting_country_codes(driver)
         driver.get 'https://letcode.in/forms'
 
-        options = driver.find_elements(:tag_name => "option")
-        options.each do |opt|
-            if(opt.text.include?"+")
-                if()
-                puts opt.text
-                end
-            end
+        country_name_element = driver.find_elements(:tag_name, 'select')[1]
+        country_name = country_name_element.find_elements(:tag_name, 'option')
+        country_name.each do|e|
+            puts e.text
         end
         driver.quit()
     end
