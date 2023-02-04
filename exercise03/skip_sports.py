@@ -1,4 +1,4 @@
-class Skip_sport:
+class SkipSport:
     def __init__(self) -> None:
         pass
 
@@ -14,6 +14,6 @@ class Skip_sport:
         except:
             return "error"
 
-obj_skip_sports = Skip_sport()
+obj_skip_sports = SkipSport()
 
 print(obj_skip_sports.skip_sports(["cricket","TT","Football","Hockey"],2))
