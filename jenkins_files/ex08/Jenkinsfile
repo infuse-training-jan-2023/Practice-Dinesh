@@ -4,13 +4,13 @@ pipeline {
     agent any
 
     stages {
-        stage('getting-data') {
+        stage('get-n-print-data') {
             steps {
                 script {
                     def get_data = new URL("https://jsonplaceholder.typicode.com/todos").openConnection();
                     def data = get_data.getInputStream().getText()
-                    def jsonObject = new JsonSlurperClassic().parseText(data)
-                    for(task in jsonObject){
+                    def tasksjsonObject = new JsonSlurperClassic().parseText(data)
+                    for(task in tasksjsonObject){
                         if(task.completed == false){
                             println(task)
                         }
