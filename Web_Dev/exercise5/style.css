@@ -38,7 +38,10 @@ button{
     height: 50px;
     width:150px ;
     border-radius: 25%;
+    cursor: pointer;
 }
+
+   
 
 .search-input{
     margin: 20px 10px 0px 10px;
@@ -84,12 +87,12 @@ button{
 
 
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 550px) {
 
     #main_container_and_button{
         display: flex;
         flex-wrap: wrap;
-        width: 200px;
+        width: 170px;
     }
 
     iframe{

@@ -91,7 +91,7 @@ async function get_pokemon_data(i) {
             <h2>Attack: ${pokemon_attack}</h2>
             <h2>Defense: ${pokemon_defense}</h2>
             <h2>Special-Attack: ${pokemon_special_attack}</h2>
-            <h2>Moves: ${pokemon_move1},${pokemon_move2},${pokemon_move3},${pokemon_move4}</h2>
+            <h3>Moves: ${pokemon_move1},${pokemon_move2},${pokemon_move3},${pokemon_move4}</h2>
             </div>`
         })
 
@@ -127,33 +127,33 @@ let search_pokemon = ()  =>{
 
 }
 
-let sorted = (child_no) =>{
-
-    var result = Array.from(document.getElementById("main-container").children).sort((a,b)=>{
-        
-        a = (String(a.children[child_no].innerText).split("=")[1])
-        b = (String(b.children[child_no].innerText).split("=")[1])
-         return a-b
-    })
-    document.getElementById("main-container").replaceChildren(...result)
-    console.log("sorted")
-}
+// let sorted = (child_no) =>{
+//     var result = Array.from(document.getElementById("main-container").children).sort((a,b)=>(String(a.children[child_no].innerText).split("=")[1])-(String(b.children[child_no].innerText).split("=")[1]))
+//     document.getElementById("main-container").replaceChildren(...result)
+//     console.log("sorted")
+// }
 
 
-let sorted_by_name = (child_no) =>{
+// let sorted_by_name = (child_no) =>{
+//     var result = Array.from(document.getElementById("main-container").children).sort((a,b)=>{
+//         if((String(a.children[child_no].innerText).split("=")[1])>(String(b.children[child_no].innerText).split("=")[1]) == true){
+//             return 1
+//         }
+//         return -1
+//     })
+//     document.getElementById("main-container").replaceChildren(...result)
+//     console.log("sorted")
+// }
 
-    var result = Array.from(document.getElementById("main-container").children).sort((a,b)=>{
-        a = (String(a.children[child_no].innerText).split("=")[1])
-        b = (String(b.children[child_no].innerText).split("=")[1])
-        if(a>b == true){
-            return 1
-        }
-         return -1
-    })
-    document.getElementById("main-container").replaceChildren(...result)
-    console.log("sorted")
-}
-
+const sort = (child_no) => {
+    const children = Array.from(document.getElementById("main-container").children);
+    const result = children.sort((a, b) => {
+            if (String(a.children[child_no].innerText).split("=")[1] > String(b.children[child_no].innerText).split("=")[1]) return 1;
+            return -1;
+        } )
+    document.getElementById("main-container").replaceChildren(...result);
+    console.log("sorted");
+};
 
 
 

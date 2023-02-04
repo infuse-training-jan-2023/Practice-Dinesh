@@ -1,12 +1,13 @@
-const element2 = document.getElementById('element2');
 const button = document.getElementById('button');
 
-
-let  printtime = ()=>{
-    var date = new Date();
-    var current_time = date.getHours()+":"+date.getMinutes()+":"+ date.getSeconds();
-    element2.innerHTML=current_time;
+const printtime = () => {
+    const date = new Date();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const seconds = date.getSeconds();
+    const current_time = `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+    const element2 = document.getElementById("element2");
+    element2.innerHTML = current_time;
 }
-
 setInterval(printtime, 1000);
 
