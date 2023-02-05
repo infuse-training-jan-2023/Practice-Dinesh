@@ -1,3 +1,6 @@
+# import sys
+# sys.path.append('../')
+
 from subarray import Subarray
 from data import arr
 import unittest
