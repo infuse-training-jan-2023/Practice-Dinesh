@@ -1,3 +1,7 @@
+# import sys
+# sys.path.append('../')
+
+
 from serial_avg import SerialAvg
 import unittest
 
