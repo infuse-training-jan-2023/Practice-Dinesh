@@ -38,22 +38,22 @@ class Automate_web_page
     end
 
     def enter_age_data()
-        radio_button = fw.get_element(:id => "over_13") 
+        radio_button = fw.get_element({:id => "over_13"}) 
         # radio_button = fw.get_element_by_id("over_13")
         fw.click_element(radio_button)
     end
 
     def enter_bio_data()
-        text_area = fw.get_element_by_id("bio")
+        text_area = fw.get_element({:id => "bio"})
         fw.click_element(text_area)
         fw.send_data("intern at Infuse",text_area)
     end
 
     def enter_job_role_data()
-        drop_down = fw.get_element_by_id("job")
+        drop_down = fw.get_element({:id => "job"})
         fw.click_element(drop_down)
 
-        options = fw.get_elements_by_tag_name("option",drop_down)
+        options = fw.get_elements({:tag_name => "options"},drop_down)
         fw.wait_for(1)
         fw.click_element(options[4])
     end

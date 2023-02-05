@@ -1,8 +1,24 @@
 require 'test/unit'
 require_relative "Selenium_Framework_2"
+require_relative "driverfile"
 
 class Test_framework < Test::Unit::TestCase
    
+    
+        def test_click_element
+            driver = Framework.new.create_driver()
+            url = "file:///C:/Users/dines/git/infuse/Practice-Dinesh/workshop/index.html"
+            # url = "file:///app/index.html"
+            obj = Framework.new()
+            # obj.driver.get(url)
+            obj.open_site_and_maximize(url)
+            submit_btn = obj.get_element({:tag_name => "button"})
+            obj.click_element(submit_btn)
+            obj.wait_for(2)
+            name_input_tag = obj.get_element({:id => "name"})
+            assert_equal("",name_input_tag["value"])
+            obj.quit_browser()
+        end  
 
     def test_open_site_and_maximize
         url = "file:///C:/Users/dines/git/infuse/Practice-Dinesh/workshop/index.html"
@@ -20,19 +36,6 @@ class Test_framework < Test::Unit::TestCase
         assert_equal(3,obj.wait_for(3))
         obj.quit_browser()
     end
-
-    def test_click_element
-        url = "file:///C:/Users/dines/git/infuse/Practice-Dinesh/workshop/index.html"
-        # url = "file:///app/index.html"
-        obj = Framework.new()
-        obj.open_site_and_maximize(url)
-        submit_btn = obj.get_element({:tag_name => "button"})
-        obj.click_element(submit_btn)
-        obj.wait_for(2)
-        name_input_tag = obj.get_element({:id => "name"})
-        assert_equal("",name_input_tag["value"])
-        obj.quit_browser()
-    end  
 
     def test_get_element_by_id
         url = "file:///C:/Users/dines/git/infuse/Practice-Dinesh/workshop/index.html"

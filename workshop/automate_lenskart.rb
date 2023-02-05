@@ -101,7 +101,8 @@ class Automate_lenskart
 
         framework_obj.switch_tab()
         puts(framework_obj.get_title())
-        framework_obj.wait_for(5)buy_now_button = framework_obj.get_element({:xpath => '/html/body/div[1]/div/div[2]/div/div/div[2]/div[2]/div[4]/div/div[1]/button'})
+        framework_obj.wait_for(5)
+        buy_now_button = framework_obj.get_element({:xpath => '/html/body/div[1]/div/div[2]/div/div/div[2]/div[2]/div[4]/div/div[1]/button'})
         framework_obj.click_element(buy_now_button)
         framework_obj.wait_for(5)
         zero_power_div = framework_obj.get_element({:xpath => '//*[@id="mySidenav"]/div[2]/div[2]/div/div/div[2]/div'})
