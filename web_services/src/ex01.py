@@ -15,10 +15,10 @@ def validate_email():
 
 def validate(email):
     if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
-        Response(json.dumps({"message": "Invalid"}),mimetype='application/json',status=400)
-        return "invalid"
-    Response(json.dumps({"message": "Valid"}),mimetype='application/json',status=200)
-    return "valid"
+        msg = Response('{"message": "Invalid"}',mimetype='application/json',status=400)
+        return msg
+    msg = Response('{"message": "Valid"}',mimetype='application/json',status=200)
+    return msg
     
 
 

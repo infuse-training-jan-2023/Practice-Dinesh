@@ -9,10 +9,10 @@ def test_validate_id(mocker):
     mocker.patch('ex03.validate', return_value = [])
     resp= validate(todo_id)
     print(validate(todo_id))
-    assert resp == ({'completed': False, 'id': 1, 'title': 'delectus aut autem', 'userId': 1}, 200)
+    assert resp.status == "200 OK"
 
 def test_validate_wrong_id(mocker):
     todo_id = 201
     mocker.patch('ex03.validate', return_value = [])
     resp= validate(todo_id)
-    assert resp == ("Input must be an integer between 1 to 200.",400)
+    assert resp.status == "400 BAD REQUEST"

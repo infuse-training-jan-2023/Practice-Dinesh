@@ -9,24 +9,24 @@ def test_validate_short_password(mocker):
     mocker.patch('ex02.validate', return_value = [])
     resp= validate(password)
     print(validate(password))
-    assert resp == "Password must be at least 8 characters long."
+    assert resp.status == "400 BAD REQUEST"
 
 def test_validate_valid_password(mocker):
     password="Dinesh@123alhdskla"
     mocker.patch('ex02.validate', return_value = [])
     resp= validate(password)
-    assert resp == "valid"
+    assert resp.status == "200 OK"
 
 def test_validate_case_password(mocker):
     password="dineshgawas"
     mocker.patch('ex02.validate', return_value = [])
     resp= validate(password)
-    assert resp == "Password must contain both lowercase and uppercase letters."
+    assert resp.status == "400 BAD REQUEST"
 
 def test_validate_spcl_char_password(mocker):
     password="Dineshgawas"
     mocker.patch('ex02.validate', return_value = [])
     resp= validate(password)
-    assert resp == "Password must contain at least one special character."
+    assert resp.status == "400 BAD REQUEST"
 
 

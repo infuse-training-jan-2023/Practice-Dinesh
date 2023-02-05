@@ -19,12 +19,16 @@ def validate_password():
 
 def validate(password):
     if len(password) < 8:
-        return "Password must be at least 8 characters long."
+        error_msg = Response("{'error' : 'Password must be at least 8 characters long'.}",status = 400)
+        return error_msg
     if not re.search("[a-z]", password) or not re.search("[A-Z]", password):
-        return "Password must contain both lowercase and uppercase letters."
+        error_msg = Response("{'error':'Password must contain both lowercase and uppercase letters.'}",status = 400)
+        return error_msg
     if not re.search("[!@#\$%\^\&\*\(\)\-\_\=\+\{\}\[\]\|\:\;\"<>,\.\?]", password):
-        return "Password must contain at least one special character."
-    return "valid"
+        error_msg = Response("{'error':'Password must contain at least one special character.'}",status = 400)
+        return error_msg
+    msg = Response("{'msg':'valid'}",mimetype = 'application/json',status = 200)
+    return msg
 
 
 if __name__ == '__main__':

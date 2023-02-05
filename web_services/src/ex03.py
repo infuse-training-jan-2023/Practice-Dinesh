@@ -14,10 +14,10 @@ def todo(todo_id):
 
 def validate(todo_id):
     if todo_id < 1 or todo_id > 200:
-        return "Input must be an integer between 1 to 200.", 400
+        return Response('{"msg" : "Input must be an integer between 1 to 200."}', status = 400)
     response = requests.get(f'https://jsonplaceholder.typicode.com/todos/{todo_id}')
     if response.status_code == 200:
-        return response.json(), 200
+        return Response(response.json(),mimetype="application/json",status = 200)
     return "Todo not found", 404
 
 if __name__ == '__main__':
