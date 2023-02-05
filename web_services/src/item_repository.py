@@ -89,3 +89,30 @@ class ItemRepository:
             raise Exception('Error: ', e)
         finally:
             conn.close()
+
+
+    @staticmethod
+    def get_all_items():
+      try:
+        conn = ItemRepository.connect_db()
+        c = conn.cursor()
+        rows = c.execute('select * from items')
+        return rows
+      except Exception as e:
+        raise Exception('Error: ', e)
+
+    @staticmethod
+    def add_item(item,status, reminder):
+      try:
+        conn = ItemRepository.connect_db()
+        c = conn.cursor()
+        insert_cursor = c.execute('insert into items(item, status, reminder) values(?,?,?)', (item, status, reminder))
+        conn.commit()
+        return {
+          'id': insert_cursor.lastrowid,
+          'item': item,
+          'status': status,
+          'reminder': reminder
+        }
+      except Exception as e:
+        raise Exception('Error: ', e)

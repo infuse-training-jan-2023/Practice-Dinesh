@@ -1,19 +1,26 @@
-from flask import Flask, request, jsonify
+from flask import Flask,Response, request
+import json
+
 import re
 
 app = Flask(__name__)
 
-@app.route('/validate_email', methods=['POST'])
+@app.route('/email', methods=['POST'])
 def validate_email():
     email = request.json.get('email')
     if not email:
-        return jsonify({"error": "Email is required."}), 400
+        return Response(json.dumps({"error": "Email is required."}), 400)
+    return validate(email)
 
+
+def validate(email):
     if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
-        return jsonify({"message": "Invalid"}), 400
-
-    return jsonify({"message": "Valid"}), 200
+        Response(json.dumps({"message": "Invalid"}),mimetype='application/json',status=400)
+        return "invalid"
+    Response(json.dumps({"message": "Valid"}),mimetype='application/json',status=200)
+    return "valid"
     
 
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5001, host='0.0.0.0')

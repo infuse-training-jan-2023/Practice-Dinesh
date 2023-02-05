@@ -11,6 +11,24 @@ item_actions = ItemActions()
 def hello():
     return 'Hello World!'
 
+@app.route('/items', methods = ['POST'])
+def add_new_item():
+    request_data = request.get_json()
+    item = request_data['item']
+    status = request_data['status']
+    reminder = request_data['reminder']
+    added_item = item_actions.add_item(item,status, reminder)
+    if added_item == {}:
+        return Response("{'error': 'Erro addding the item'}", mimetype='application/json', status=500)
+    return Response(json.dumps(added_item), mimetype='application/json', status=201)
+
+
+@app.route('/items',methods = ['GET'])
+def get_all_items():
+    items = item_actions.get_all_items()
+    print(items)
+    return Response(json.dumps(items), mimetype='application/json',status = 200)
+
 
 @app.route('/items/<int:id>', methods=['GET'])
 def get_item(id):
@@ -26,7 +44,7 @@ def delete_a_menu_item(id):
     return Response(json.dumps(items), mimetype='application/json', status=200)
 
 
-@app.route('/item/<int:id>', methods=['PUT'])
+@app.route('/items/<int:id>', methods=['PUT'])
 def update_item(id):
     request_data = request.get_json()
     try:
@@ -48,7 +66,6 @@ def update_item(id):
     if added_item == {}:
         return Response("{'error': 'Error updating the item'}", mimetype='application/json', status=500)
     return Response(json.dumps(added_item), mimetype='application/json', status=201)
-
 
 
 @app.route('/user/add_user', methods=['POST'])

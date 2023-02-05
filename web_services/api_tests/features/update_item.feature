@@ -5,5 +5,5 @@ Feature: Update a item
     Scenario: Update a item
         When I update a item
         Then item should be updated
-        Then the api status code should be 500
+        Then the api status code should be 201
         Then the api response should be json

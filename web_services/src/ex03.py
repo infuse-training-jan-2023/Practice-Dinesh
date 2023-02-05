@@ -10,6 +10,9 @@ def index():
 
 @app.route('/todo/<int:todo_id>', methods=['GET'])
 def todo(todo_id):
+    return validate(todo_id)
+
+def validate(todo_id):
     if todo_id < 1 or todo_id > 200:
         return "Input must be an integer between 1 to 200.", 400
     response = requests.get(f'https://jsonplaceholder.typicode.com/todos/{todo_id}')
@@ -18,4 +21,4 @@ def todo(todo_id):
     return "Todo not found", 404
 
 if __name__ == '__main__':
-    app.run(debug = True,port = 5002,host = '0.0.0.0')
+    app.run(debug = True,port = 5003,host = '0.0.0.0')
