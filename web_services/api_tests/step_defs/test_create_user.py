@@ -15,7 +15,7 @@ def create_user():
 @then('user should be added')
 def check_item_returned():
     data = pytest.api_response.json()
-    assert type(data) == dict
+    assert type(data) == type('user added successfully')
 
 @then('api status code should be 201')
 def check_api_status():

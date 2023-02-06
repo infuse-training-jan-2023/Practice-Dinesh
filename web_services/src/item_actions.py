@@ -1,4 +1,5 @@
 from item_repository import ItemRepository
+import csv
 
 class ItemActions:
     def __init__(self) -> None:
@@ -37,27 +38,17 @@ class ItemActions:
             print(e)
             return {}
 
-    def add_user(self,name,age):
-        try:
-            item = self.item_repo.add_user(name,age)
-            return item
-        except Exception as e:
-            print(e)
-            return {}
-
 
     def add_item_to_csv(self):
         try:
-            item = self.item_repo.add_item_to_csv()
-            return item
-        except Exception as e:
-            print(e)
-            return {}
-    
-    def add_item(self, item,status, reminder):
-        try:
-            item = self.item_repo.add_item(item,status, reminder)
-            return item
+            columns = ["id","item","status","reminder"]
+            rows = self.item_repo.get_all_items()
+            with open('../items.csv', 'w') as csvfile:
+                csvwriter = csv.writer(csvfile)
+                csvwriter.writerow(columns)
+                csvwriter.writerows(rows)
+                return {"status":"Saved to CSV file"}
+            # item = self.item_repo.add_item_to_csv()
         except Exception as e:
             print(e)
             return {}
