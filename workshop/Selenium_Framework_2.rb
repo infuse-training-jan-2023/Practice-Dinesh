@@ -3,8 +3,9 @@ require_relative "driverfile"
 
 class Framework
 
-   def initialize
-      @driver = SeleniumWebDriver.new.create_driver()
+   def initialize(driver_new)
+      @driver = driver_new
+      # @driver = SeleniumWebDriver.new.create_driver()
    end
 
      def open_site_and_maximize(url)

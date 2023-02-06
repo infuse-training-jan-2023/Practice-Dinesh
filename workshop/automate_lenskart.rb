@@ -1,15 +1,18 @@
 require_relative "Selenium_Framework_2"
+require_relative "driverfile"
 
 
 class Automate_lenskart
 
-    attr_accessor :framework_obj
+    attr_accessor :framework_obj, :url
     def initialize
-        @framework_obj = Framework.new()
+        driver = SeleniumWebDriver.new.create_driver()
+        @framework_obj = Framework.new(driver)
+        @url = "https://www.lenskart.com"
     end
 
     def open_website
-        framework_obj.open_site_and_maximize("https://www.lenskart.com")
+        framework_obj.open_site_and_maximize(url)
         framework_obj.wait_for(5)
         puts "website opened"
         puts framework_obj.get_title()
