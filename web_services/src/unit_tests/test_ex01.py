@@ -1,5 +1,6 @@
-# import sys
-# sys.path.append('../')
+import sys
+sys.path.append('../')
+
 from src.ex01 import validate
 from requests import HTTPError
 import requests

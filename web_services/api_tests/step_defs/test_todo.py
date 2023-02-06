@@ -4,7 +4,7 @@ import requests
 
 scenarios('../features/todo.feature')
 
-add_item_url = "http://172.17.12.94:5003/todo/3"
+add_item_url = "http://127.0.0.1:5003/todo/3"
 @when('I send the number')
 def add_email():
     pytest.api_response = requests.get(add_item_url)

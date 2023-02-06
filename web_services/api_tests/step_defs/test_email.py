@@ -4,7 +4,7 @@ import requests
 
 scenarios('../features/email.feature')
 
-add_item_url = "http://172.17.12.94:5001/email"
+add_item_url = "http://127.0.0.1:5001/email"
 item = {"email" : "dinesh@123.com"}
 @when('I send the email')
 def add_email():

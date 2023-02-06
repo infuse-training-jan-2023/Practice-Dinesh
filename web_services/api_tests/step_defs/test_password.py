@@ -4,7 +4,7 @@ import requests
 
 scenarios('../features/password.feature')
 
-add_item_url = "http://172.17.12.94:5002/password"
+add_item_url = "http://127.0.0.1:5002/password"
 item = {"password" : "Dinesh@123"}
 @when('I send the password')
 def add_password():
