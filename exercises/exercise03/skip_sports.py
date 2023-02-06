@@ -5,14 +5,14 @@ class SkipSport:
     def skip_sports(self,arr,no):
         try: 
             if(no < 0 or no > len(arr)):
-                return "invalid number"
+                raise Exception ("invalid number")
             hash = {}
             for index in range(len(arr)):
                 if index >= no:
                     hash[index] = arr[index]
             return hash
-        except:
-            return "error"
+        except Exception as e:
+            return f"error:: {e}"
 
 obj_skip_sports = SkipSport()
 

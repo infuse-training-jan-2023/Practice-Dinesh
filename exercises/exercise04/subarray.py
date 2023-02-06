@@ -26,8 +26,8 @@ class Subarray:
                     prevSums[current_Sum] = 1
 
             return Count
-        except:
-            return "Invalid Input"
+        except Exception as e:
+            return f"error:: {e}"
 
 obj = Subarray()
 print(obj.get_subarray_sum_count(arr,-93))

@@ -10,10 +10,10 @@ class TestSubArray(unittest.TestCase):
         self.obj_subarray = Subarray()
 
     def test_subarray_no_input(self):
-        self.assertEqual(self.obj_subarray.get_subarray_sum_count(arr," ") , "Invalid Input") 
+        self.assertEqual(self.obj_subarray.get_subarray_sum_count(arr," ") , "error:: unsupported operand type(s) for -: 'int' and 'str'") 
     
     def test_subarray_char_input(self):
-        self.assertEqual( self.obj_subarray.get_subarray_sum_count(arr,"k"), "Invalid Input")
+        self.assertEqual( self.obj_subarray.get_subarray_sum_count(arr,"k"), "error:: unsupported operand type(s) for -: 'int' and 'str'")
     
     def test_subarray_valid_input(self):
         self.assertEqual(self.obj_subarray.get_subarray_sum_count(arr,-93), 1023) 

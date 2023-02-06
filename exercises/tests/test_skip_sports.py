@@ -13,7 +13,7 @@ class TestSkipSports(unittest.TestCase):
 
     def test_no_number_passed(self):
         arr = ["cricket","TT","Football","Hockey"]
-        self.assertEqual("error", self.obj_skip_sport.skip_sports(arr,'x')) 
+        self.assertEqual("error:: '<' not supported between instances of 'str' and 'int'", self.obj_skip_sport.skip_sports(arr,'x')) 
 
     def test_int_passed_in_array(self):
         arr = ["cricket","TT",4,"Hockey"]
@@ -21,11 +21,11 @@ class TestSkipSports(unittest.TestCase):
 
     def test_no_less_thn_zero(self):
         arr = ["cricket","TT","Football","Hockey"]
-        self.assertEqual("invalid number", self.obj_skip_sport.skip_sports(arr,-1)) 
+        self.assertEqual("error:: invalid number", self.obj_skip_sport.skip_sports(arr,-1)) 
 
     def test_no_greater_than_equal_to_arr_length(self):
         arr = ["cricket","TT","Football","Hockey"]
-        self.assertEqual("invalid number", self.obj_skip_sport.skip_sports(arr,12)) 
+        self.assertEqual("error:: invalid number", self.obj_skip_sport.skip_sports(arr,12)) 
 
     def test_skip_sports_test(self):
         arr = ["cricket","TT","Football","Hockey"]
