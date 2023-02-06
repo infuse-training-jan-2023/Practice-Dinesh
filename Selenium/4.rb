@@ -6,17 +6,15 @@ driver = Selenium::WebDriver.for :chrome
 driver.manage.window.maximize
 
 class Check_box_radio_btn
-    def selecting_check_box_radio_btn(driver)
-        driver.get 'https://demo.automationtesting.in/Register.html'
+    def selecting_check_box_radio_btn(driver,url)
+        driver.get(url)
         driver.find_elements(:name,'radiooptions')[0].click
         driver.find_elements(:id,'checkbox1')[0].click
-
-        sleep(3)
-
         driver.quit()
     end
 end
 
+url = 'https://demo.automationtesting.in/Register.html'
 obj = Check_box_radio_btn.new()
-obj.selecting_check_box_radio_btn(driver)
+obj.selecting_check_box_radio_btn(driver,url)
 

@@ -6,13 +6,14 @@ driver = Selenium::WebDriver.for :chrome
 driver.manage.window.maximize
 
 class Click_button
-    def clicking_button(driver)
-        driver.get "https://practise.usemango.co.uk/"
+    def clicking_button(driver,url)
+        driver.get(url)
         driver.find_element(:id,'about').click
         driver.quit()
     end
 end
 
+url = "https://practise.usemango.co.uk/"
 obj = Click_button.new()
-obj.clicking_button(driver)
+obj.clicking_button(driver,url)
 

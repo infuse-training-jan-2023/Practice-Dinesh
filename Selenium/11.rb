@@ -1,7 +1,7 @@
 require 'selenium-webdriver'
 Selenium::WebDriver::Chrome::Service.driver_path = "C:\\Users\\dines\\Selenium\\chromedriver_win32\\chromedriver.exe"
 driver = Selenium::WebDriver.for :chrome
-url = "https://the-internet.herokuapp.com/tables"
+
 
 class Get_cell
     def getting_a_cell(driver,url)
@@ -17,5 +17,6 @@ class Get_cell
     end
 end
 
+url = "https://the-internet.herokuapp.com/tables"
 obj = Get_cell.new()
 obj.getting_a_cell(driver,url)

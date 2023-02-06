@@ -1,7 +1,5 @@
 require 'selenium-webdriver'
 
-url = "https://magento.softwaretestingboard.com/"
-
 class Twelve
 
     attr_accessor :driver
@@ -56,15 +54,16 @@ class Twelve
 
 end
 
+
+url = "https://magento.softwaretestingboard.com/"
+
 twlv = Twelve.new()
 
 twlv.open_website_get_title(url)
 twlv.send_text_to_searchbar()
 twlv.click_img()
 twlv.get_price_and_name()
-
 twlv.order_by_checking_price()
-
 twlv.go_to_cart()
 
 

@@ -4,18 +4,18 @@ driver = Selenium::WebDriver.for :chrome
 driver.manage.window.maximize
 
 class Get_country_codes
-    def getting_country_codes(driver)
-        driver.get 'https://letcode.in/forms'
-
+    def getting_country_codes(driver,url)
+        driver.get(url)
         country_name_element = driver.find_elements(:tag_name, 'select')[1]
         country_name = country_name_element.find_elements(:tag_name, 'option')
-        country_name.each do|e|
-            puts e.text
+        country_name.each do|country|
+            puts country.text
         end
         driver.quit()
     end
 end   
 
+url = 'https://letcode.in/forms'
 obj = Get_country_codes.new()
-obj.getting_country_codes(driver)
+obj.getting_country_codes(driver,url)
 
