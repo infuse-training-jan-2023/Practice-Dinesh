@@ -1,5 +1,12 @@
 require 'json'
 
+def get_json_data()
+	json_file = File.read(ENV["file"])
+	data = JSON.parse(json_file)
+    return data
+end
+
+
 num_arr = ARGV
 num = num_arr[0].to_i
 
@@ -24,11 +31,4 @@ end
 	end
 
 
-
-j = '{"a": 1, "b": 2}'
-puts JSON.parse(j)
-
-
-hash = { 'a' => 1, 'b' => 2 }
-json = hash.to_json
-puts json
+puts (get_json_data())

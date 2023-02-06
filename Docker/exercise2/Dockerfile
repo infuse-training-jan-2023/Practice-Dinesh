@@ -1,4 +1,6 @@
 FROM ruby
 WORKDIR /src/
-COPY one.rb .
+RUN gem install json
+ENV file "data.json"
+COPY . .
 CMD ruby one.rb 5
