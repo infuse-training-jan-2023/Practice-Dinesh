@@ -17,7 +17,7 @@ pipeline {
                 bat "git switch jenkins-ruby"
                 bat "git status"
                 bat "git merge -X theirs jenkins-ruby1"
-                bat "git commit -m 'merged jenkins-ruby1 and jenkins-ruby'"
+                bat "git push -u origin jenkins-ruby"
             }
         }
     }
