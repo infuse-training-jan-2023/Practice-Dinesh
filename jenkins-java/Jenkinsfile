@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('compile') {
             steps {
                 bat 'javac Dup_Char.java'
             }
