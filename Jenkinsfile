@@ -17,8 +17,7 @@ pipeline {
         stage('Merge') {
             steps {
                 bat "git switch jenkins-ruby"
-                bat "git fetch Practice-Dinesh"
-                bat "git merge jenkins-ruby2"
+                bat "git merge origin/jenkins-ruby2"
                 bat "git push -u origin jenkins-ruby"
             }
         }
