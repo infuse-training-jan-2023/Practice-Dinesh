@@ -6,6 +6,10 @@ class Main
         end
         return arr[index]
     end
+
+    def print_hello_world()
+        return "Hello World"
+    end
 end 
 
 obj = Main.new
