@@ -4,9 +4,7 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
 
-        }
         stage('Test') {
             steps {
                 bat "git clone https://github.com/infuse-training-jan-2023/Practice-Dinesh/"
