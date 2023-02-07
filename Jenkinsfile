@@ -1,6 +1,7 @@
 pipeline {
-    agent any
-
+     agent {
+        label "jenkins-slave-Dinesh"
+    }
     stages {
         stage('Build') {
             steps {
