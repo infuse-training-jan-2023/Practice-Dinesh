@@ -1,24 +1,15 @@
 pipeline {
-    agent {
-        label "jenkins-slave-dinesh"
-    }
+    agent any
 
     stages {
-
-        stage('Test') {
+        stage('Build') {
             steps {
-                bat "git clone https://github.com/infuse-training-jan-2023/Practice-Dinesh/"
-                bat "cd PRACTICE-DINESH"
-                bat "git switch jenkins-ruby1"
-                bat "ruby test_new.rb"
+                echo 'Hello World'
             }
         }
-         stage('Merge') {
+        stage('Test') {
             steps {
-                bat "git switch jenkins-ruby"
-                bat "git status"
-                bat "git merge -X theirs jenkins-ruby1"
-                bat "git push -u origin jenkins-ruby"
+                bat "ruby test_new.rb"
             }
         }
     }
