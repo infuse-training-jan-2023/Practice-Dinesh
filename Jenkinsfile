@@ -9,7 +9,7 @@ pipeline {
                 bat "git clone https://github.com/infuse-training-jan-2023/Practice-Dinesh/"
                 bat "cd PRACTICE-DINESH"
                 bat "git switch jenkins-ruby1"
-                bat "ruby test.rb"
+                bat "ruby test_new.rb"
             }
         }
          stage('Merge') {
