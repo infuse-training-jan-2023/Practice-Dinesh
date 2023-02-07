@@ -15,6 +15,7 @@ pipeline {
          stage('Merge') {
             steps {
                 bat "git switch jenkins-ruby"
+                bat "mv Jenkins Jenkins1"
                 bat "git merge jenkins-ruby1"
                 bat "git commit -m 'merged jenkins-ruby1 and jenkins-ruby'"
             }

@@ -1,5 +1,5 @@
 require 'test/unit'
-require_relative "main"
+require_relative "main_new"
 
 class Test_question4 < Test::Unit::TestCase
 
