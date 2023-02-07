@@ -7,7 +7,8 @@ class Table_column
         driver.get(url)
         trs = driver.find_elements(:tag_name, "tr")
         trs.each do |tr|
-            puts tr.text 
+            data = tr.text
+            puts data.split(" ")
         end
         driver.quit()
     end

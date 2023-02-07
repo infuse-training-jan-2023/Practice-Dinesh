@@ -6,13 +6,11 @@ driver = Selenium::WebDriver.for :chrome
 class Get_cell
     def getting_a_cell(driver,url)
         driver.get(url)
-        cells = driver.find_elements(:tag_name, "td")
-        puts cells[5].text
-        # tbody = driver.find_element(:tag_name => 'tbody')
-        # tr = tbody.find_elements(:tag_name => 'tr')
-        # td = tr[2].find_elements(:tag_name => 'td')
-        # a = td[2].text
-        # puts a
+        tbody = driver.find_element(:tag_name => 'tbody')
+        tr = tbody.find_elements(:tag_name => 'tr')
+        td = tr[2].find_elements(:tag_name => 'td')
+        a = td[2].text
+        puts a
 
         p = driver.find_element(:tag_name => 'p')
         puts p
