@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                bat "pwd"
+                bat "%CD%"
                 bat "git clone https://github.com/infuse-training-jan-2023/Practice-Dinesh/"
                 bat "cd PRACTICE-DINESH"
                 bat "git switch jenkins-ruby1"
