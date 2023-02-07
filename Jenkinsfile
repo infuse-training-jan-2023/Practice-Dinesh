@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                bat "ruby test_new.rb"
+                bat "ruby test.rb"
             }
         }
         stage('Merge') {
