@@ -4,22 +4,17 @@ driver = Selenium::WebDriver.for :chrome
 
 
 class Get_cell
-    def getting_a_cell(driver,url)
+    def getting_a_cell(driver,url,n)
         driver.get(url)
-        tbody = driver.find_element(:tag_name => 'tbody')
-        tr = tbody.find_elements(:tag_name => 'tr')
-        td = tr[2].find_elements(:tag_name => 'td')
+
+        td = driver.find_elements(:tag_name => 'td')
         a = td[2].text
         puts a
 
-        p = driver.find_element(:tag_name => 'p')
-        puts p
-
-        sleep(2)
         driver.quit()
     end
 end
 
 url = "https://the-internet.herokuapp.com/tables"
 obj = Get_cell.new()
-obj.getting_a_cell(driver,url)
+obj.getting_a_cell(driver,url,3)
