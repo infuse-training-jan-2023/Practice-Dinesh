@@ -1,0 +1,12 @@
+1]
+Inheritance is a mechanism that allows us to inherit all the properties from another class.Inheritance is also called an Is-A Relation
+eg: car(parent class), electric-car(child class) so here electric car is a car (is a relationship)
+class can contain an object of another class Component. This type of relationship is known as Has-A Relation.
+eg like car has doors 
+
+
+2]append() adds a single element to the end of the list while,
+ extend() can add multiple individual elements to the end of the list.
+
+
+3]
