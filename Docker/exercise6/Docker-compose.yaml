@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  backend:
+    build: 
+      context: ./server
+    ports:
+      - "4000:4000"
+    volumes:
+      - C:\Users\dines\git\infuse\Practice-Dinesh\Docker\exercise6\server:/server
+  frontend:
+    build: 
+      context: ./client
+    ports:
+      - "3000:3000"
+    volumes:
+      - C:\Users\dines\git\infuse\Practice-Dinesh\Docker\exercise6\client:/client
+    environment:
+      - WATCHPACK_POLLING=true
