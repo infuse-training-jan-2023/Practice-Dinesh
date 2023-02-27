@@ -33,9 +33,9 @@ Resources:
   Log_to_s3_bucket:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: test.lambda_handler
+      Handler: lamda-function.lambda_handler
       Runtime: python3.9
-      CodeUri: test.py
+      CodeUri: lamda-function.py
       Role: !GetAtt MyLambdaExecutionRole.Arn
 
   ApiGateway:
