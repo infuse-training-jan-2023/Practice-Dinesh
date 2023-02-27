@@ -11,7 +11,7 @@ Resources:
   MyLambdaExecutionRole:
     Type: AWS::IAM::Role
     Properties:
-      RoleName: my-lambda-role
+      RoleName: lambda-access-role
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
         Statement:
@@ -30,7 +30,7 @@ Resources:
               - s3:PutObject
             Resource: '*'
 
-  MyLambdaFunction:
+  Log_to_s3_bucket:
     Type: AWS::Serverless::Function
     Properties:
       Handler: test.lambda_handler
@@ -38,49 +38,49 @@ Resources:
       CodeUri: test.py
       Role: !GetAtt MyLambdaExecutionRole.Arn
 
-  MyApiGateway:
+  ApiGateway:
     Type: AWS::ApiGateway::RestApi
     Properties:
       Name: my-api-gateway
 
-  MyResource:
+  ApiGatewayResource:
     Type: AWS::ApiGateway::Resource
     Properties:
-      RestApiId: !Ref MyApiGateway
-      PathPart: my-resource
-      ParentId: !GetAtt MyApiGateway.RootResourceId
+      RestApiId: !Ref ApiGateway
+      PathPart: resource
+      ParentId: !GetAtt ApiGateway.RootResourceId
 
-  MyMethod:
+  ApiGatewayMethod:
     Type: AWS::ApiGateway::Method
     Properties:
-      RestApiId: !Ref MyApiGateway
-      ResourceId: !Ref MyResource
+      RestApiId: !Ref ApiGateway
+      ResourceId: !Ref ApiGatewayResource
       HttpMethod: POST
       AuthorizationType: NONE
       Integration:
         Type: AWS_PROXY
         IntegrationHttpMethod: POST
-        Uri: !Sub arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${MyLambdaFunction.Arn}/invocations
+        Uri: !Sub arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${Log_to_s3_bucket.Arn}/invocations
       MethodResponses:
       - StatusCode: '200'
 
   MyDeployment:
     Type: AWS::ApiGateway::Deployment
-    DependsOn: MyMethod
+    DependsOn: ApiGatewayMethod
     Properties:
-      RestApiId: !Ref MyApiGateway
+      RestApiId: !Ref ApiGateway
 
   MyLambdaPermission:
     Type: AWS::Lambda::Permission
     Properties:
-      FunctionName: !Ref MyLambdaFunction
+      FunctionName: !Ref Log_to_s3_bucket
       Action: lambda:InvokeFunction
       Principal: apigateway.amazonaws.com
 
 Outputs:
   EndpointURL:
     Description: URL of the endpoint
-    Value: !Sub "https://${MyApiGateway}.execute-api.${AWS::Region}.amazonaws.com/MyDeployment/my-resource"
+    Value: !Sub "https://${ApiGateway}.execute-api.${AWS::Region}.amazonaws.com/MyDeployment/resource"
   BucketName:
     Description: Name of the S3 bucket
     Value: !Ref MyBucket
