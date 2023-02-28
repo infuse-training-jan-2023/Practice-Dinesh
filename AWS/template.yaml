@@ -3,7 +3,7 @@ Transform: AWS:Serverless-2016-10-31
 
 Resources:
 
-  MyBucket:
+  MyDummyBucket:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: ex-01-bucket
@@ -86,4 +86,4 @@ Outputs:
     Value: !Sub "https://${ApiGatewayRestApi}.execute-api.${AWS::Region}.amazonaws.com/ApiGatewayDeployment/resource"
   BucketName:
     Description: Name of the S3 bucket
-    Value: !Ref MyBucket
+    Value: !Ref MyDummyBucket
