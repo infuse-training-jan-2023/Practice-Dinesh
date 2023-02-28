@@ -6,7 +6,7 @@ Resources:
   MyBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: infuse-bucket-o1
+      BucketName: ex-01-bucket
 
   MyLambdaExecutionRole:
     Type: AWS::IAM::Role
@@ -30,7 +30,7 @@ Resources:
               - s3:PutObject
             Resource: '*'
 
-  Log_to_s3_bucket:
+  LogDeliveryLambda:
     Type: AWS::Serverless::Function
     Properties:
       Handler: lamda-function.lambda_handler
@@ -38,10 +38,10 @@ Resources:
       CodeUri: lamda-function.py
       Role: !GetAtt MyLambdaExecutionRole.Arn
 
-  ApiGateway:
+  ApiGatewayRestApi:
     Type: AWS::ApiGateway::RestApi
     Properties:
-      Name: my-api-gateway
+      Name: test-api-gateway
 
   ApiGatewayResource:
     Type: AWS::ApiGateway::Resource
@@ -53,34 +53,37 @@ Resources:
   ApiGatewayMethod:
     Type: AWS::ApiGateway::Method
     Properties:
-      RestApiId: !Ref ApiGateway
+      RestApiId: !Ref ApiGatewayRestApi
       ResourceId: !Ref ApiGatewayResource
       HttpMethod: POST
       AuthorizationType: NONE
       Integration:
         Type: AWS_PROXY
         IntegrationHttpMethod: POST
-        Uri: !Sub arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${Log_to_s3_bucket.Arn}/invocations
+        Uri: !Sub
+          - >-
+            arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${LambdaFuncNameArn}/invocations
+          - LambdaFuncNameArn: !GetAtt LambdaFunction.Arn
       MethodResponses:
       - StatusCode: '200'
 
-  MyDeployment:
+  ApiGatewayDeployment:
     Type: AWS::ApiGateway::Deployment
     DependsOn: ApiGatewayMethod
     Properties:
-      RestApiId: !Ref ApiGateway
+      RestApiId: !Ref ApiGatewayRestApi
 
-  MyLambdaPermission:
+  ApiGatewayPermission:
     Type: AWS::Lambda::Permission
     Properties:
-      FunctionName: !Ref Log_to_s3_bucket
+      FunctionName: !Ref LogDeliveryLambda
       Action: lambda:InvokeFunction
       Principal: apigateway.amazonaws.com
 
 Outputs:
   EndpointURL:
     Description: URL of the endpoint
-    Value: !Sub "https://${ApiGateway}.execute-api.${AWS::Region}.amazonaws.com/MyDeployment/resource"
+    Value: !Sub "https://${ApiGatewayRestApi}.execute-api.${AWS::Region}.amazonaws.com/ApiGatewayDeployment/resource"
   BucketName:
     Description: Name of the S3 bucket
     Value: !Ref MyBucket
